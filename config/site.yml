@@ -8,7 +8,7 @@ metafields:
   theme:
     color_scheme: "blue"
     font: "Lora"
-    background_image: "/images/graphy.png"
+    background_image: ""
     background_fixed: true
   google:
     recaptcha_site_key: "<GOOGLE SITE KEY>"
