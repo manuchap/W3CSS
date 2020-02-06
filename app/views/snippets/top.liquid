@@ -1,0 +1,8 @@
+{% if section.settings.top_sep %}<hr/>{% endif %}
+<div class="w3-container">
+  {% if section.settings.title or section.settings.subtitle %}
+  <div class="w3-center">
+    {% if section.settings.title %}<h2>{{ section.settings.title }}</h2>{% endif %}
+    {% if section.settings.subtitle %}<h4>{{ section.settings.subtitle }}</h4>{% endif %}
+  </div>
+  {% endif %}

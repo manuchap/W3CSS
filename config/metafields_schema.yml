@@ -1,0 +1,27 @@
+theme:
+  label: Sitewide options
+  fields:
+    color_scheme:
+      type: select
+      select_options: ['amber','aqua','blue','blue-gray','brown','cyan','dark-gray','deep-orange','deep-purple','gray','green','indigo','khaki','light-blue','light-gray','light-green','lime','orange','pale-green','pale-red','pale-yellow','pale-blue','pink','purple','red','sand','teal','white','yellow']
+    font:
+      type: select
+      select_options: ['Dosis','Lora','Slabo','Nunito Sans']
+    background_image:
+      type: image
+      hint: 'You can find nice background patterns here: https://www.toptal.com/designers/subtlepatterns/'
+    background_fixed:
+      type: boolean
+    background_color:
+      type: color
+contact:
+  google:
+  label: Google API Integration
+  fields:
+    recaptcha_site_key:
+      hint: reCAPTCHA - Site key
+      type: string
+      hint: "Visit: https://developers.google.com/recaptcha/intro"
+    recaptcha_secret:
+      hint: reCAPTCHA - Secret key
+      type: string

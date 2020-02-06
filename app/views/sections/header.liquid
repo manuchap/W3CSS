@@ -1,0 +1,89 @@
+---
+name: Header
+icon: header
+keep_icon: true
+keep_name: true
+settings:
+- label: Top separator
+  id: top_sep
+  type: checkbox
+- label: Bottom separator
+  id: bot_sep
+  type: checkbox
+- label: Header title
+  id: header_title
+  type: text
+- label: Header subtitle
+  id: header_subtitle
+  type: text
+- label: Background image
+  id: header_image
+  type: image_picker
+- label: Modal
+  id: modal_button
+  type: checkbox
+- label: Modal button text
+  id: modal_button_text
+  type: text
+  only_if: modal_button
+- label: Modal header
+  id: modal_header
+  type: text
+  only_if: modal_button
+- label: Modal content
+  id: modal_content
+  type: text
+  html: true
+  only_if: modal_button
+- label: Modal footer
+  id: modal_footer
+  type: text
+  only_if: modal_button
+blocks: []
+dropzone_presets:
+- name: Header
+  category: Fullwidth
+  settings:
+    show_header: true
+    show_title: true
+    header_title: BUILT WITH W3.CSS
+    show_subtitle: true
+    header_subtitle: BEAUTIFUL RESPONSIVE WEB SITES
+    modal_button: true
+    modal_button_text: LEARN W3.CSS
+    modal_header: <h4>Oh snap! We just showed you a modal..</h4><h5><br>Because we
+      can <i class="fa fa-smile-o"></i></h5>
+    modal_content: <p>Cool huh? Ok, enough teasing around..</p><p>Go to our<a class="w3-btn"
+      href="#">W3.CSS Tutorial</a>to learn more!</p>
+    modal_footer: "<p>Modal footer</p>"
+  blocks: []
+---
+{% if section.settings.top_sep %}<hr/>{% endif %}
+<header class="w3-container w3-theme w3-padding"{% if section.settings.header_image %} style="background-image: url({{ section.settings.header_image }});"{% endif %}>
+  {% if session.top_menu != true %}<i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>{% endif %}
+  <div class="w3-center">
+    <h4>{{ section.settings.header_subtitle }}</h4><br>
+    <h1 class="w3-xxxlarge w3-animate-bottom">{{ section.settings.header_title }}</h1>
+    {% if section.settings.modal_button %}
+    <div class="w3-padding-32">
+      <button class="w3-btn w3-xlarge w3-theme-dark w3-hover-light-grey" onclick="modalon()" style="font-weight:900;">{{ section.settings.modal_button_text }}</button>
+    </div>
+    {% endif %}
+  </div>
+</header>
+<div class="w3-modal" id="id01">
+  <div class="w3-modal-content w3-card-4 w3-animate-top">
+    <header class="w3-container w3-theme-l1">
+      <span onclick="modaloff()"
+        class="w3-button w3-display-topright">×</span>
+      {{ section.settings.modal_header }}
+    </header>
+    <div class="w3-padding">
+      {{ section.settings.modal_content }}
+    </div>
+    <footer class="w3-container w3-theme-l1">
+      <p>{{ section.settings.modal_footer }}</p>
+    </footer>
+  </div>
+</div>
+{% if section.settings.bot_sep %}<hr/>{% endif %}

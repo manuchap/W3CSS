@@ -1,0 +1,20 @@
+name: Tables
+slug: tables
+description: Copy the Name of the table and paste it in your section's name field.
+label_field_name: name
+order_by: name
+order_direction: asc
+entry_template: 'Name: <strong><a href="{{ link }}">{{ entry._label }}</a></strong>'
+fields:
+- name:
+    label: Name of the table
+    type: string
+    required: true
+    hint: Name
+    localized: false
+- content:
+    label: Content
+    type: text
+    required: true
+    hint: 'Content of the table. Only use the table functionality in the editor below. You can use the following css classes: w3-table w3-striped w3-bordered w3-hoverable'
+    localized: false

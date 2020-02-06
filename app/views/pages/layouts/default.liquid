@@ -1,0 +1,24 @@
+---
+title: Default layout
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    {% seo %}
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="{{ 'favicon.png' | theme_image_url }}" rel="shortcut icon">
+    {{ 'styles.css' | stylesheet_tag }}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/lib/w3-theme-{{ site.metafields.theme.color_scheme }}.css">
+    <style>body, h1, h2, h3, h4, h5, h6 { font-family: {{ site.metafields.theme.font }}; }</style>
+  </head>
+  <body{% if site.metafields.theme.background_image %} style="background-image: url({{ site.metafields.theme.background_image }}){% if site.metafields.theme.background_fixed %};background-attachment: fixed{% endif %}"{% endif %}{% if site.metafields.theme.background_color %} style="background-color: {{ site.metafields.theme.background_color }}"{% endif %}>
+    {% global_section 'navigation', placement: 'top' %}
+    {% sections_dropzone %}
+    {% block 'content' %}
+    {% endblock %}
+    {% global_section 'footer', placement: 'bottom' %}
+    {{ 'scripts.js' | javascript_tag }}
+    {% if wagon %}<script src="http://localhost:35729/livereload.js"></script>{% endif %}
+  </body>

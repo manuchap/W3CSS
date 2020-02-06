@@ -1,0 +1,15 @@
+name: "W3CSS"
+locales: [fr]
+timezone: Paris
+seo_title: w3css
+meta_keywords: "some meta keywords"
+meta_description: "some meta description"
+metafields:
+  theme:
+    color_scheme: "blue"
+    font: "Lora"
+    background_image: "/images/graphy.png"
+    background_fixed: true
+  google:
+    recaptcha_site_key: "<GOOGLE SITE KEY>"
+    recaptcha_secret: "<GOOGLE SECRET>"

@@ -1,0 +1,54 @@
+---
+name: Tables
+icon: list
+keep_icon: true
+keep_name: true
+settings:
+- label: 'Use an online table in excel: https://www.dummies.com/software/microsoft-office-for-mac/excel-for-mac/using-a-web-query-to-load-tables-in-excel-2011-for-mac'
+  id: tables_hint_1
+  type: hint
+- label: Top separator
+  id: top_sep
+  type: checkbox
+- label: Bottom separator
+  id: bot_sep
+  type: checkbox
+- label: More shadow
+  id: more_shadow
+  type: checkbox
+- label: Title
+  id: title
+  type: text
+- label: Subtitle
+  id: subtitle
+  type: text
+- label: Name (of a table object)
+  id: name
+  type: text
+  hint: Use the table Name
+- label: See table Names
+  id: tables
+  type: content_type
+- label: (Ctrl or cmd click to open in new window)
+  id: tables_hint_2
+  type: hint
+blocks: []
+dropzone_presets:
+- name: Table
+  category: Models
+  settings:
+    top_sep: true
+    bot_sep: false
+    title: Table
+    subtitle: Don't worry. W3.CSS takes care of your tables.
+  blocks: []
+---
+{% include 'top' %}
+  <div class="w3-responsive w3-card{% if section.settings.more_shadow %}-4{% endif %}">
+    {% with_scope name: section.settings.name %}
+    {% for table in contents.tables %}
+    {{ table.content }}
+    {% endfor %}
+    {% endwith_scope %}
+  </div>
+{% include 'bot' %}

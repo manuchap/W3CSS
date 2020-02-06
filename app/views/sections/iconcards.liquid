@@ -1,0 +1,163 @@
+---
+name: Icon Cards
+icon: image_text
+keep_icon: true
+keep_name: true
+settings:
+- label: Top separator
+  id: top_sep
+  type: checkbox
+- label: Bottom separator
+  id: bot_sep
+  type: checkbox
+- label: More shadow
+  id: more_shadow
+  type: checkbox
+- label: Rounded corners
+  id: rounded_corners
+  type: checkbox
+- only_if: rounded_corners
+  label: Rounded corners size
+  id: rounded_corners_size
+  type: select
+  options:
+  - label: Normal
+    value: w3-round
+  - label: Large
+    value: w3-round-large
+  - label: XLarge
+    value: w3-round-xlarge
+- label: Title
+  id: title
+  type: text
+- label: Subtitle
+  id: subtitle
+  type: text
+- label: Only the first three cards will show on the page
+  id: numcar
+  type: hint
+blocks:
+- name: Icon Card
+  type: icon_card
+  settings:
+  - label: Card title
+    id: title
+    type: text
+  - label: 'Icons list: https://fontawesome.com/v4.7.0/icons'
+    id: hint
+    type: hint
+  - label: Card icon
+    id: icon
+    type: text
+  - label: Card text
+    id: text
+    type: text
+    html: true
+  - label: Card background color
+    id: color
+    type: select
+    options:
+    - label: Amber
+      value: amber
+    - label: Aqua
+      value: aqua
+    - label: Blue
+      value: blue
+    - label: Blue-Gray
+      value: blue-gray
+    - label: Brown
+      value: brown
+    - label: Cyan
+      value: cyan
+    - label: Dark-Gray
+      value: dark-gray
+    - label: Deep-Orange
+      value: deep-orange
+    - label: Deep-Purple
+      value: deep-purple
+    - label: Gray
+      value: gray
+    - label: Green
+      value: green
+    - label: Indigo
+      value: indigo
+    - label: Khaki
+      value: khaki
+    - label: Light-Blue
+      value: light-blue
+    - label: Light-Gray
+      value: light-gray
+    - label: Light-Green
+      value: light-green
+    - label: Lime
+      value: lime
+    - label: Orange
+      value: orange
+    - label: Pale-Green
+      value: pale-green
+    - label: Pale-Red
+      value: pale-red
+    - label: Pale-Yellow
+      value: pale-yellow
+    - label: Pale-Blue
+      value: pale-blue
+    - label: Pink
+      value: pink
+    - label: Purple
+      value: purple
+    - label: Red
+      value: red
+    - label: Sand
+      value: sand
+    - label: Teal
+      value: teal
+    - label: White
+      value: white
+    - label: Yellow
+      value: yellow
+dropzone_presets:
+- name: Cards with icons
+  category: Cards
+  settings:
+    top_sep: true
+    bot_sep: false
+    more_shadow: false
+    rounded_corners: true
+    rounded_corners_size: w3-round-small
+  blocks:
+  - type: icon_card
+    settings:
+      title: Responsive
+      icon: desktop
+      text: "<p>Built-in responsiveness</p><p>Mobile first fluid grid</p><p>Fits any
+        screen sizes</p><p>PC Tablet and Mobile</p>"
+      color: white
+  - type: icon_card
+    settings:
+      title: Standard CSS
+      icon: css3
+      text: "<p>Standard CSS only</p><p>Easy to learn</p><p>No need for jQuery</p><p>No
+        JavaScript library</p>"
+      color: white
+  - type: icon_card
+    settings:
+      title: Design
+      icon: diamond
+      text: "<p>Paper like design</p><p>Bold colors and shadows</p><p>Equal across
+        platforms</p><p>Equal across devices</p>"
+      color: white
+---
+{% include 'top' %}
+  <div class="w3-row-padding w3-center w3-margin-top">
+    {% for block in section.blocks | limit: 3 %}
+    <div class="w3-third">
+      <div class="w3-card{% if section.settings.more_shadow %}-4{% endif %} {{ section.settings.rounded_corners_size }}  w3-{{ block.settings.color }} w3-padding" style="height:100%">
+        <h3>{{ block.settings.title }}</h3>
+        <br>
+        <i class="fa fa-{{ block.settings.icon }} w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+        {{ block.settings.text }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% include 'bot' %}

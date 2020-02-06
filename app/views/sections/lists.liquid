@@ -1,0 +1,59 @@
+---
+name: Lists
+icon: list
+keep_icon: true
+keep_name: true
+settings:
+- label: Top separator
+  id: top_sep
+  type: checkbox
+- label: Bottom separator
+  id: bot_sep
+  type: checkbox
+- label: More shadow
+  id: more_shadow
+  type: checkbox
+- label: Title
+  id: title
+  type: text
+- label: Subitle
+  id: subtitle
+  type: text
+- label: List title
+  id: list_title
+  type: text
+blocks:
+- name: List item
+  type: list_item
+  settings:
+  - label: List item
+    id: list_item
+    type: text
+dropzone_presets:
+- name: List
+  category: Forms and Lists
+  settings:
+    title: Title
+    list_title: List
+  blocks:
+  - type: list_item
+    settings:
+      list_item: 'Adam'
+  - type: list_item
+    settings:
+      list_item: 'Eve'
+  - type: list_item
+    settings:
+      list_item: 'Steve'
+---
+{% include 'top' %}
+  <div class="w3-container w3-card{% if section.settings.more_shadow %}-4{% endif %}">
+    <ul class="w3-margin-top w3-ul w3-border w3-hoverable">
+      <li class="w3-theme">{{ section.settings.list_title }}</li>
+      {% for block in section.blocks %}
+      <li>{{ block.settings.list_item }}</li>
+      {% endfor %}
+    </ul>
+    <br>
+  </div>
+{% include 'bot' %}

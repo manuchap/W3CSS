@@ -1,0 +1,58 @@
+---
+name: Accordions
+icon: default
+keep_icon: true
+keep_name: true
+settings:
+- label: Top separator
+  id: top_sep
+  type: checkbox
+- label: Bottom separator
+  id: bot_sep
+  type: checkbox
+- label: Title
+  id: title
+  type: text
+- label: Subtitle
+  id: subtitle
+  type: text
+blocks:
+- name: Accordion item
+  type: acc_item
+  settings:
+  - label: Accordion title
+    id: acc_title
+    type: text
+  - label: Accordion content
+    id: acc_content
+    type: text
+    html: true
+dropzone_presets:
+- name: Accordions
+  category: Dynamic
+  settings:
+    title: Hello world
+  blocks:
+  - type: acc_item
+    settings:
+      acc_title: Section 1
+      acc_content: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+  - type: acc_item
+    settings:
+      acc_title: Section 2
+      acc_content: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+  - type: acc_item
+    settings:
+      acc_title: Section 3
+      acc_content: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+---
+{% include 'top' %}
+  {% for block in section.blocks %}
+  <button onclick="myAccFunc('Acc{{ forloop.index }}')" class="w3-padding-16 w3-theme w3-button w3-block w3-left-align">{{ block.settings.acc_title }}</button>
+  <div class="w3-hide w3-animate-opacity w3-white" id="Acc{{ forloop.index }}">
+    <div class="w3-container">
+      {{ block.settings.acc_content }}
+    </div>
+  </div>
+  {% endfor %}
+{% include 'bot' %}

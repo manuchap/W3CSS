@@ -1,0 +1,1 @@
+/Users/manuchap/Sites/Loco/Symlinks/Guardfile-latest

@@ -1,0 +1,57 @@
+---
+name: Slideshows
+icon: slide
+keep_icon: true
+keep_name: true
+settings:
+- label: Top separator
+  id: top_sep
+  type: checkbox
+- label: Bottom separator
+  id: bot_sep
+  type: checkbox
+- label: Title
+  id: title
+  type: text
+- label: Subtitle
+  id: subtitle
+  type: text
+- label: Maximum width (in pixels)
+  id: width
+  type: text
+blocks:
+- name: Image
+  type: image
+  settings:
+  - label: Image
+    id: image
+    type: image_picker
+dropzone_presets:
+- name: Slideshows
+  category: Dynamic
+  settings:
+    title: Slideshow
+    width: 800
+  blocks:
+  - type: image
+    settings:
+      image: "/samples/fjords.jpg"
+  - type: image
+    settings:
+      image: "/samples/lights.jpg"
+  - type: image
+    settings:
+      image: "/samples/mountains.jpg"
+  - type: image
+    settings:
+      image: "/samples/forest.jpg"
+---
+{% include 'top' %}
+  <div class="w3-content" style="max-width:{{ section.settings.width }}px;position:relative">
+    {% for block in section.blocks %}      
+    <img class="mySlides w3-animate-opacity" src="{{ block.settings.image }}" style="width:100%">
+    {% endfor %}
+    <a class="w3-button w3-hover-dark-grey" onclick="plusDivs(-1)" style="position:absolute;top:45%;left:0;color:white;">«</a>
+    <a class="w3-button w3-hover-dark-grey" onclick="plusDivs(+1)" style="position:absolute;top:45%;right:0;color:white;">»</a>
+  </div>
+{% include 'bot' %}

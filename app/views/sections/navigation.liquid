@@ -1,0 +1,119 @@
+---
+name: Navigation
+class: nav
+icon: header
+keep_icon: true
+keep_name: true
+settings:
+- label: Top menu
+  id: top_menu
+  type: checkbox
+- label: Fixed menu
+  id: fixed_menu
+  type: checkbox
+  only_if: top_menu
+- label: Menu style
+  id: menu_style
+  type: select
+  options:
+  - label: Light
+    value: w3-theme-light
+  - label: Dark
+    value: w3-theme-dark
+  only_if: top_menu
+- label: Mobile menu title
+  id: title
+  type: text
+- label: Mobile menu close
+  id: close
+  type: text
+- label: View published pages
+  id: pages_links
+  type: checkbox
+- label: External links
+  id: ext_links
+  type: checkbox
+blocks:
+- name: Menu entry
+  type: menu_entry
+  settings:
+  - label: Item title
+    id: title
+    type: text
+  - label: Url
+    id: url
+    type: url
+default:
+  settings:
+    top_menu: true
+    fixed_menu: false
+    title: Site Pages
+    close: Close
+    menu_style: w3-theme-dark
+    pages_links: true
+    ext_links: true
+  blocks:
+  - type: menu_entry
+    settings:
+      title: Google
+      url: google.com
+---
+{% session_assign top_menu = section.settings.top_menu %}
+{% if session.top_menu == true %}
+{% if section.settings.fixed_menu == true %}<div class="w3-top">{% endif %}
+<div class="w3-bar {{ section.settings.menu_style }}">
+  <a href="/" class="w3-bar-item w3-button w3-left">{{ site.index.title }}</a>
+  {% if section.settings.pages_links %}
+  {% for page in site.pages | offset: 1 %}
+  <a href="{{ page.slug }}" class="w3-bar-item w3-button w3-hide-small">{{ page.title }}</a>
+  {% endfor %}
+  {% endif %}
+  {% if section.settings.ext_links %}
+  {% for block in section.blocks %}
+  <a href="{{ block.settings.url }} {{ block.settings.url.new_window_attribute }}" class="w3-bar-item w3-button w3-hide-small">{{ block.settings.title }}</a>
+  {% endfor %}
+  {% endif %}
+  <i class="fa fa-bars w3-xlarge w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()"></i>
+</div>
+<nav class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left w3-center" id="mySidebar" style="display:none">
+  <h1 class="w3-xxxlarge">{{ section.settings.title }}</h1>
+  <button class="w3-bar-item w3-button" onclick="w3_close()">
+    <span>{{ section.settings.close }}</span>
+    <i class="fa fa-remove"></i>
+  </button>
+  {% if section.settings.pages_links %}
+  {% with_scope published: true %}
+  {% for page in site.pages %}
+  <a href="{{ page.slug }}" class="w3-bar-item w3-button">{{ page.title }}</a>
+  {% endfor %}
+  {% endwith_scope %}
+  {% endif %}
+  {% if section.settings.ext_links %}
+  {% for block in section.blocks %}
+  <a href="{{ block.settings.url }} {{ block.settings.url.new_window_attribute }}" class="w3-bar-item w3-button">{{ block.settings.title }}</a>
+  {% endfor %}
+  {% endif %}
+</nav>
+{% if section.settings.fixed_menu == true %}</div><div class="fixed_menu_spacer" style="height: 41px;"></div>{% endif %}
+{% else %}
+<nav class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left w3-center" id="mySidebar" style="display:none">
+  <h1 class="w3-xxxlarge">{{ section.settings.title }}</h1>
+  <button class="w3-bar-item w3-button" onclick="w3_close()">
+    {{ section.settings.close }}
+    <i class="fa fa-remove"></i>
+  </button>
+  <a class="w3-bar-item w3-button" href="/">{{ site.index.title }}</a>
+  {% if section.settings.pages_links %}
+  {% with_scope published: true %}
+  {% for page in site.pages | offset: 1 %}
+  <a href="{{ page.slug }}" class="w3-bar-item w3-button">{{ page.title }}</a>
+  {% endfor %}
+  {% endwith_scope %}
+  {% endif %}
+  {% if section.settings.ext_links %}
+  {% for block in section.blocks %}
+  <a href="{{ block.settings.url }} {{ block.settings.url.new_window_attribute }}" class="w3-bar-item w3-button">{{ block.settings.title }}</a>
+  {% endfor %}
+  {% endif %}
+</nav>
+{% endif %}

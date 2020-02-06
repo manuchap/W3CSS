@@ -1,0 +1,67 @@
+---
+name: Cards
+icon: list
+keep_icon: true
+keep_name: true
+settings:
+- label: Top separator
+  id: top_sep
+  type: checkbox
+- label: Bottom separator
+  id: bot_sep
+  type: checkbox
+- label: More shadow
+  id: more_shadow
+  type: checkbox
+- label: Title
+  id: title
+  type: text
+- label: Subtitle
+  id: subtitle
+  type: text
+- label: Only the first three cards will show on the page
+  id: numcar
+  type: hint
+blocks:
+- name: Card
+  type: card
+  settings:
+  - label: Image
+    id: image
+    type: image_picker
+  - label: Legend
+    id: legend
+    type: text
+dropzone_presets:
+- name: Cards with images
+  category: Cards
+  settings:
+    title: Paper-like Cards with Shadows
+  blocks:
+  - type: card
+    settings:
+      image: "/samples/car.jpg"
+      legend: w3-card
+  - type: card
+    settings:
+      image: "/samples/car.jpg"
+      legend: w3-card
+  - type: card
+    settings:
+      image: "/samples/car.jpg"
+      legend: w3-card
+---
+{% include 'top' %}
+<div class="w3-row-padding">
+  {% for block in section.blocks | limit: 3 %}
+  <div class="{% case forloop.length %}{% when 1 %}w3-rest{% when 2 %}w3-half{% when 3 %}w3-third{% endcase %}">
+    <div class="w3-center w3-card{% if section.settings.more_shadow %}-4{% endif %}">
+      <img class="w3-image" alt="Car" src="{{ block.settings.image }}">
+      <div class="w3-container">
+        <p>{{ block.settings.legend }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% include 'bot' %}

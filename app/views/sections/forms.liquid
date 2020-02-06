@@ -1,0 +1,76 @@
+---
+name: Forms
+icon: text
+keep_icon: true
+keep_name: true
+settings:
+- label: Top separator
+  id: top_sep
+  type: checkbox
+- label: Bottom separator
+  id: bot_sep
+  type: checkbox
+- label: More shadow
+  id: more_shadow
+  type: checkbox
+- label: Title
+  id: title
+  type: text
+- label: Subitle
+  id: subtitle
+  type: text
+- label: Form title
+  id: form_title
+  type: text
+dropzone_presets:
+- name: Form
+  category: Forms and Lists
+  settings:
+    top_sep: true
+    bot_sep: false
+    more_shadow: false
+    title: Input Forms
+    form_title: Form title
+---
+{% include 'top' %}
+  <div class="w3-padding w3-card{% if section.settings.more_shadow %}-4{% endif %}">
+    {% model_form 'messages', success: '/', error: '/', recaptcha: true %}
+      {% if customer_message.errors %}
+        <p>The following errors occured:</p>
+        <ul>
+        {% for error in customer_message.errors %}
+          <li>{{error[0] | capitalize}} - {{error[1]}}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      {% if section.settings.form_title %}
+      <h2>{{ section.settings.form_title }}</h2>
+      {% endif %}
+      <div class="w3-section">
+        <input class="w3-input" required="" type="text" name="content[name]" value="{{customer_message.name}}">
+        <label>Name</label>
+      </div>
+      <div class="w3-section">
+        <input class="w3-input" required="" type="text" name="content[email]" value="{{customer_message.email}}">
+        <label>Email</label>
+      </div>
+      <div class="w3-section">
+        <textarea rows="10" class="w3-input" required="" type="text" name="content[message]">{{customer_message.message}}</textarea>
+        <label>Message</label>
+      </div>
+      <div class="w3-section">
+        <button class="w3-btn w3-large w3-theme-dark w3-hover-light-grey" type="submit">Send</button>
+      </div>
+    {% endmodel_form %}
+    {% unless wagon %}
+    <script src="https://www.google.com/recaptcha/api.js?render={{ site.metafields.google.recaptcha_site_key }}"></script>
+    <script>
+      grecaptcha.ready(function() {
+        grecaptcha.execute('{{ site.metafields.google.recaptcha_site_key }}', {action: 'register'}).then(function(token) {
+          document.getElementById('g-recaptcha-response').value  = token;
+        });
+      });
+    </script>
+    {% endunless %}
+  </div>
+{% include 'bot' %}

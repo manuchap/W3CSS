@@ -1,0 +1,156 @@
+---
+name: Columns
+icon: list
+keep_icon: true
+keep_name: true
+settings:
+- label: Top separator
+  id: top_sep
+  type: checkbox
+- label: Bottom separator
+  id: bot_sep
+  type: checkbox
+- label: Title
+  id: title
+  type: text
+- label: Subtitle
+  id: subtitle
+  type: text
+- label: Only the first six columns will show on the page
+  id: numcol
+  type: hint
+blocks:
+- name: Column
+  type: column
+  settings:
+  - label: Column text
+    id: text
+    type: text
+    html: true
+  - label: Column background color
+    id: color
+    type: select
+    options:
+    - label: Amber
+      value: amber
+    - label: Aqua
+      value: aqua
+    - label: Blue
+      value: blue
+    - label: Blue-Gray
+      value: blue-gray
+    - label: Brown
+      value: brown
+    - label: Cyan
+      value: cyan
+    - label: Dark-Gray
+      value: dark-gray
+    - label: Deep-Orange
+      value: deep-orange
+    - label: Deep-Purple
+      value: deep-purple
+    - label: Gray
+      value: gray
+    - label: Green
+      value: green
+    - label: Indigo
+      value: indigo
+    - label: Khaki
+      value: khaki
+    - label: Light-Blue
+      value: light-blue
+    - label: Light-Gray
+      value: light-gray
+    - label: Light-Green
+      value: light-green
+    - label: Lime
+      value: lime
+    - label: Orange
+      value: orange
+    - label: Pale-Green
+      value: pale-green
+    - label: Pale-Red
+      value: pale-red
+    - label: Pale-Yellow
+      value: pale-yellow
+    - label: Pale-Blue
+      value: pale-blue
+    - label: Pink
+      value: pink
+    - label: Purple
+      value: purple
+    - label: Red
+      value: red
+    - label: Sand
+      value: sand
+    - label: Teal
+      value: teal
+    - label: White
+      value: white
+    - label: Yellow
+      value: yellow
+dropzone_presets:
+- name: 6 Columns
+  category: Columns
+  settings:
+    top_sep: true
+    bot_sep: false
+    title: Color Classes
+    subtitle: Preview the colors <a href="https://www.w3schools.com/w3css/w3css_colors.asp"
+      target="_blank">here</a>
+  blocks:
+  - type: column
+    settings:
+      text: "<p>Red</p>"
+      color: red
+  - type: column
+    settings:
+      text: "<p>blue</p>"
+      color: blue
+  - type: column
+    settings:
+      text: "<p>Blue Grey</p>"
+      color: blue-grey
+  - type: column
+    settings:
+      text: "<p>Teal</p>"
+      color: teal
+  - type: column
+    settings:
+      text: "<p>Yellow</p>"
+      color: yellow
+  - type: column
+    settings:
+      text: "<p>Orange</p>"
+      color: orange
+- name: 3 Columns
+  category: Columns
+  settings:
+    top_sep: true
+    bot_sep: false
+    title: Color Classes
+    subtitle: Preview the colors <a href="https://www.w3schools.com/w3css/w3css_colors.asp"
+      target="_blank">here</a>
+  blocks:
+  - type: column
+    settings:
+      text: "<p>blue</p>"
+      color: blue
+  - type: column
+    settings:
+      text: "<p>White</p>"
+      color: white
+  - type: column
+    settings:
+      text: "<p>Red</p>"
+      color: red
+---
+{% include 'top' %}
+  <div class="w3-row">
+  {% for block in section.blocks | limit: 6 %}
+    <div class="w3-col w3-padding m{% case forloop.length %}{% when 1 %}12{% when 2 %}6{% when 3 %}4{% when 4 %}3{% when 5 %}3{% when 6 %}2{% endcase %} w3-{{ block.settings.color }}">
+      {{ block.settings.text }}
+    </div>
+  {% endfor %}
+  </div>
+{% include 'bot' %}

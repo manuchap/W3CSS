@@ -1,0 +1,66 @@
+---
+name: Tabs
+icon: default
+keep_icon: true
+keep_name: true
+settings:
+- label: Top separator
+  id: top_sep
+  type: checkbox
+- label: Bottom separator
+  id: bot_sep
+  type: checkbox
+- label: Title
+  id: title
+  type: text
+- label: Subitle
+  id: subtitle
+  type: text
+blocks:
+- name: Tab item
+  type: tab_item
+  settings:
+  - label: Tab title
+    id: tab_title
+    type: text
+  - label: Tab content
+    id: tab_content
+    type: text
+    html: true
+dropzone_presets:
+- name: Tabs
+  category: Dynamic
+  settings:
+    top_sep: true
+    bot_sep: false
+    show_title: true
+    title: Tabs
+  blocks:
+  - type: tab_item
+    settings:
+      tab_title: London
+      tab_content: "<p>London is the capital city of England.</p><p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>"
+  - type: tab_item
+    settings:
+      tab_title: Paris
+      tab_content: "<p>Paris is the capital of France.</p><p>The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.</p>"
+  - type: tab_item
+    settings:
+      tab_title: Tokyo
+      tab_content: "<p>Tokyo is the capital of Japan.</p><p>It is the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.</p>"
+---
+{% include 'top' %}
+  <div class="w3-border">
+    <div class="w3-bar w3-theme">
+      {% for block in section.blocks %}
+      <button class="w3-bar-item w3-button tabbtn w3-padding-16" onclick="openTab(event,'{{ block.settings.tab_title }}')">{{ block.settings.tab_title }}</button>
+      {% endfor %}
+    </div>
+    {% for block in section.blocks %}
+    <div class="w3-container tab w3-animate-opacity w3-white" id="{{ block.settings.tab_title }}">
+      <h2>{{ block.settings.tab_title }}</h2>
+      {{ block.settings.tab_content }}
+    </div>
+    {% endfor %}
+  </div>
+{% include 'bot' %}

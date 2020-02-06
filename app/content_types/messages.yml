@@ -1,0 +1,24 @@
+name: Messages
+slug: messages
+description: Messages from the site
+label_field_name: name
+order_by: created_at
+order_direction: desc
+public_submission_enabled: true
+public_submission_title_template: "{{ entry.name }} wants to reach you"
+fields:
+- name:
+    label: Name
+    type: string
+    required: true
+    localized: false
+- email:
+    label: Email
+    type: string
+    required: false
+    localized: false
+- message:
+    label: Message
+    type: text
+    required: false
+    localized: false

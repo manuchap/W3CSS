@@ -1,0 +1,12 @@
+config/deploy.yml
+data/
+log/
+node_modules/
+Gemfile.lock
+yarn.lock
+*.DS_store
+.ruby-version
+.vscode
+app/assets/.babelrc
+package-lock.json
+public/samples/_home/

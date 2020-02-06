@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('nunito-sans-v5-latin-regular.eot');
+  src: local('Nunito Sans Regular'), local('NunitoSans-Regular'),
+       url('nunito-sans-v5-latin-regular.eot?#iefix') format('embedded-opentype'),
+       url('nunito-sans-v5-latin-regular.woff2') format('woff2'),
+       url('nunito-sans-v5-latin-regular.woff') format('woff'),
+       url('nunito-sans-v5-latin-regular.ttf') format('truetype'),
+       url('nunito-sans-v5-latin-regular.svg#NunitoSans') format('svg');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  src: url('lora-v14-latin-regular.eot');
+  src: local('Lora Regular'), local('Lora-Regular'),
+       url('lora-v14-latin-regular.eot?#iefix') format('embedded-opentype'),
+       url('lora-v14-latin-regular.woff2') format('woff2'),
+       url('lora-v14-latin-regular.woff') format('woff'),
+       url('lora-v14-latin-regular.ttf') format('truetype'),
+       url('lora-v14-latin-regular.svg#Lora') format('svg');
+}
+@font-face {
+  font-family: 'Slabo 27px';
+  font-style: normal;
+  font-weight: 400;
+  src: url('slabo-27px-v6-latin-regular.eot');
+  src: local('Slabo 27px'), local('Slabo27px-Regular'),
+       url('slabo-27px-v6-latin-regular.eot?#iefix') format('embedded-opentype'),
+       url('slabo-27px-v6-latin-regular.woff2') format('woff2'),
+       url('slabo-27px-v6-latin-regular.woff') format('woff'),
+       url('slabo-27px-v6-latin-regular.ttf') format('truetype'),
+       url('slabo-27px-v6-latin-regular.svg#Slabo27px') format('svg');
+}
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  src: url('dosis-v16-latin-regular.eot');
+  src: local(''),
+       url('dosis-v16-latin-regular.eot?#iefix') format('embedded-opentype'),
+       url('dosis-v16-latin-regular.woff2') format('woff2'),
+       url('dosis-v16-latin-regular.woff') format('woff'),
+       url('dosis-v16-latin-regular.ttf') format('truetype'),
+       url('dosis-v16-latin-regular.svg#Dosis') format('svg');
+}
