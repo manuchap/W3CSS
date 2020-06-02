@@ -14,8 +14,7 @@ theme:
       type: boolean
     background_color:
       type: color
-contact:
-  google:
+google:
   label: Google API Integration
   fields:
     recaptcha_site_key:
